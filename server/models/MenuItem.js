@@ -1,6 +1,6 @@
 const mongoose = require ('mongoose');
 
-const MenuItemSchema = new mongoose.schema({
+const MenuItemSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -20,6 +20,4 @@ const MenuItemSchema = new mongoose.schema({
     }
 });
 
-const MenuItem = mongoose.model('MenuItem', MenuItemSchema);
-
-export default MenuItem;
+module.exports = mongoose.model('MenuItem', MenuItemSchema);
