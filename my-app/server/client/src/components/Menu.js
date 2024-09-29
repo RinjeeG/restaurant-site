@@ -29,21 +29,24 @@ const Menu = () => {
     }, []); // The empty array means this effect only runs once when the component loads
 
     return (
-        <section id="menu" class="vh-100 bg-secondary text-white d-flex align-items-center">
-            <div class="container text-center">
-                <h2>Our Menu</h2>
-                <ul>
-                    {menuItems.map(item => (
-                        <li key={item._id}>
-                            <h2>{item.name}</h2>
-                            <p>{item.description}</p>
-                            <p>${item.price}</p>
-                        </li>
-                    ))}
-                </ul>
-            </div>
-        </section>
-    )
-}
+        <div id="menu" className="container mt-5">
+          <h2 className="text-center mb-5">Our Menu</h2>
+          <div className="row">
+            {menuItems.map(item => (
+              <div key={item._id} className="col-md-4 mb-4">
+                <div className="card shadow-sm">
+                  <img src={item.image || "https://via.placeholder.com/350"} className="card-img-top" alt={item.name} />
+                  <div className="card-body">
+                    <h5 className="card-title">{item.name}</h5>
+                    <p className="card-text">{item.description}</p>
+                    <p className="card-text"><strong>${item.price.toFixed(2)}</strong></p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }      
 
 export default Menu;

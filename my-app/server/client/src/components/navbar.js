@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../assets/logo/logo.jpg';
 
 const Navbar = () => {
   const handleScroll = (e, sectionId) => {
@@ -7,9 +8,10 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav className="navbar navbar-expand-lg navbar-light fixed-top">
       <div className="container">
-        <a className="navbar-brand" href="/">Limbu Kitchen</a>
+        <a className="navbar-brand" href="/">
+        <img loading="lazy" src= {logo} alt="Limbu Kitchen logo" style={{ height: '50px' }} /></a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
           <span className="navbar-toggler-icon"></span>
         </button>

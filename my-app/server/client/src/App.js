@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Menu from './components/Menu';
 import About from './components/About';
 import Contact from './components/Contact';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <section id="menu"><Menu /></section>
       <section id="about"><About /></section>
       <section id="contact"><Contact /></section>
+      <section id="footer"><Footer /></section>
       </div>
     </Router>
   );
