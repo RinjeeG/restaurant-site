@@ -21,10 +21,10 @@ const Navbar = () => {
               <a className="nav-link" href="/home" onClick={(e) => handleScroll(e, 'home')}>Home</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/menu" onClick={(e) => handleScroll(e, 'menu')}>Menu</a>
+              <a className="nav-link" href="/about" onClick={(e) => handleScroll(e, 'about')}>About</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/about" onClick={(e) => handleScroll(e, 'about')}>About</a>
+              <a className="nav-link" href="/menu" onClick={(e) => handleScroll(e, 'menu')}>Menu</a>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/contact" onClick={(e) => handleScroll(e, 'contact')}>Contact</a>
