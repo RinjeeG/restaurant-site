@@ -5,24 +5,41 @@ body {
   background-color: #fafafa; /* Light background for a clean look */
 }
 
-/* Navbar */
-.navbar {
+/* Navbar Styles */
+.custom-navbar {
   background-color: #fff;
-  border-bottom: 1px solid #ddd;
+  padding: 5px 0; /* Reduce padding to make it smaller */
+  border-bottom: 1px solid #ddd; /* Keep border for a clean look */
+  height: 60px; /* Adjust the height of the navbar */
 }
 
-.navbar-brand img {
-  height: 50px; /* Adjust logo size */
+.custom-navbar .navbar-logo {
+  height: 40px; /* Adjust logo size */
+  width: auto; /* Auto width to maintain aspect ratio */
+  display: block;
 }
 
-.nav-link {
-  font-weight: bold;
+.custom-navbar .navbar-nav {
+  justify-content: center; /* Center the navigation menu */
+  flex: 1; /* Make the nav take full width so links are in the center */
+}
+
+.custom-navbar .nav-link {
+  text-align: center;
+  background-color: #fff;
+  padding: 0 15px; /* Adjust link padding */
+  font-size: 1rem; /* Ensure the font size is consistent */
   color: #333;
 }
 
-.nav-link:hover {
-  color: #E94E1B; /* Orange hover color from logo */
+.custom-navbar .nav-link:hover {
+  color: #e74c3c; /* Use orange color from logo for hover */
 }
+
+.custom-navbar .navbar-toggler {
+  padding: 5px 10px; /* Reduce the padding for the hamburger menu */
+}
+
 
 /* Buttons */
 .btn-primary {
@@ -80,30 +97,30 @@ h1, h2 {
 .video-section {
   position: relative;
   width: 100%;
-  height: 50vh;
-  max-height: 400px;
+  padding-bottom: 56.25%; /* This maintains a 16:9 aspect ratio (100% / 16 * 9) */
   overflow: hidden;
+  background-color: #000; /* Fallback background color */
 }
 
 .video-bg {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  min-width: 100%;
-  min-height: 100%;
-  width: auto;
-  height: auto;
-  z-index: -1;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover; /* Ensures video covers the entire section */
+  object-position: center; /* Centers the video inside the container */
 }
 
 .video-content {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   z-index: 1;
   text-align: center;
   color: white;
-  padding-top: 10%;
+  padding-top: 0; /* No need for padding since we’re centering it */
 }
 
 .video-content h1 {
@@ -118,12 +135,13 @@ h1, h2 {
 }
 
 .video-content .btn-primary {
-  background-color: #E94E1B;
+  background-color: #e74c3c;
   border: none;
+  padding: 10px 20px;
 }
 
 .video-content .btn-primary:hover {
-  background-color: #C54215;
+  background-color: #c0392b;
 }
 
 /* Contact Page Container */
@@ -190,10 +208,21 @@ h1, h2 {
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .video-section {
-    height: 300px; /* Smaller height for mobile devices */
+    padding-bottom: 75%; /* Adjust for taller aspect ratio on smaller screens (4:3) */
   }
 
-  .video-bg {
-    object-position: center;
+  .video-content h1 {
+    font-size: 2rem;
+  }
+
+  .video-content p {
+    font-size: 1rem;
+  }
+  .custom-navbar {
+    padding: 10px; /* Increase padding on mobile for better touch interaction */
+  }
+
+  .custom-navbar .navbar-collapse {
+    justify-content: center; /* Ensure mobile menu is centered when open */
   }
 }
