@@ -1,8 +1,11 @@
+/* General Styles */
 body {
   font-family: 'Merriweather', serif;
   color: #333;
+  background-color: #fafafa; /* Light background for a clean look */
 }
 
+/* Navbar */
 .navbar {
   background-color: #fff;
   border-bottom: 1px solid #ddd;
@@ -18,24 +21,36 @@ body {
 }
 
 .nav-link:hover {
-  color: #e74c3c; /* Use orange color from logo for hover */
+  color: #E94E1B; /* Orange hover color from logo */
 }
 
+/* Buttons */
 .btn-primary {
-  background-color: #e74c3c; /* Orange button */
+  background-color: #E94E1B; /* Use orange from logo */
   border: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #c0392b; /* Slightly darker on hover */
+  background-color: #C54215; /* Darker orange for hover */
 }
 
+/* Typography */
 h2 {
   font-size: 2.5rem;
   color: #333;
   text-align: center;
+  font-family: 'Merriweather', serif;
 }
 
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Cards */
 .card {
   border: 1px solid #ddd;
   transition: transform 0.3s ease;
@@ -43,21 +58,31 @@ h2 {
 
 .card:hover {
   transform: scale(1.05);
-  border-color: #e74c3c; /* Border matches logo color on hover */
+  border-color: #E94E1B; /* Border color matches logo's orange on hover */
 }
 
 .card-body {
   background-color: #f8f9fa;
 }
 
+/* Section Headers */
+h1, h2 {
+  font-family: 'Merriweather', serif;
+  color: #333;
+  text-transform: uppercase;
+  border-bottom: 3px solid #E94E1B; /* Adding a cultural aesthetic to section headers */
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
 /* Video Section */
 .video-section {
   position: relative;
   width: 100%;
-  height: 50vh; /* Adjust this to control the section's height */
-  max-height: 400px; /* You can set a max height to avoid too much vertical space */
+  height: 50vh;
+  max-height: 400px;
   overflow: hidden;
-  /* background-color: black; Fallback background color */
 }
 
 .video-bg {
@@ -78,7 +103,7 @@ h2 {
   z-index: 1;
   text-align: center;
   color: white;
-  padding-top: 10%; /* Adds spacing from the top */
+  padding-top: 10%;
 }
 
 .video-content h1 {
@@ -93,13 +118,73 @@ h2 {
 }
 
 .video-content .btn-primary {
-  background-color: #e74c3c;
+  background-color: #E94E1B;
   border: none;
-  padding: 10px 20px;
 }
 
 .video-content .btn-primary:hover {
-  background-color: #c0392b;
+  background-color: #C54215;
+}
+
+/* Contact Page Container */
+.contact-page .container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Contact Information Section */
+.contact-info {
+  margin-bottom: 40px;
+}
+
+.contact-info p {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.contact-details li {
+  list-style: none;
+  margin-bottom: 10px;
+}
+
+.contact-details a {
+  text-decoration: none;
+  color: #E94E1B; /* Orange from the logo */
+}
+
+.contact-details a:hover {
+  text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form .form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  border: 2px solid #A3A3A3; /* Border with light grey */
+}
+
+.contact-form .form-control:focus {
+  border-color: #4EA7A0; /* Teal from logo for focus */
+  box-shadow: 0 0 5px rgba(78, 167, 160, 0.5); /* Soft teal glow */
+}
+
+/* Contact Form Button */
+.contact-form .btn-primary {
+  background-color: #E94E1B; /* Orange from logo */
+  border: none;
+}
+
+.contact-form .btn-primary:hover {
+  background-color: #C54215; /* Darker orange on hover */
+}
+
+/* Google Map Styles */
+.map-container iframe {
+  border-radius: 8px;
+  border: 1px solid #ddd;
 }
 
 /* Mobile Responsiveness */
@@ -109,6 +194,6 @@ h2 {
   }
 
   .video-bg {
-    object-position: center; /* Ensure video is centered */
+    object-position: center;
   }
 }
