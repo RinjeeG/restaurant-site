@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-
-
+import frontMenu from '../assets/menu/1.png';
+import backMenu from '../assets/menu/2.png';
 const Menu = () => {
 
     const [menuItems, setMenuItems] = useState([]);
@@ -32,6 +32,10 @@ const Menu = () => {
         <div id="menu" className="container mt-5">
           <h2 className="text-center mb-5">Our Menu</h2>
           <div className="row">
+            <div class="menu-photos">
+              <img src = {frontMenu} alt="Menu front side" class="menu-photo"/>
+              <img src = {backMenu} alt="Menu back side" class="menu-photo"/>
+              </div>
             {menuItems.map(item => (
               <div key={item._id} className="col-md-4 mb-4">
                 <div className="card shadow-sm">

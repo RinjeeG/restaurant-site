@@ -205,6 +205,22 @@ h1, h2 {
   border: 1px solid #ddd;
 }
 
+.menu-photos {
+  display: flex; /* Aligns images in a row */
+  flex-wrap: wrap; /* Allows wrapping to next line on smaller screens */
+  justify-content: center; /* Centers the images */
+  gap: 20px; /* Adds space between images */
+  margin: 20px auto; /* Centers the entire container */
+}
+
+.menu-photo {
+  max-width: 100%; /* Ensures images don’t exceed their container size */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 8px; /* Optional: Adds rounded corners */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a shadow for depth */
+  object-fit: contain; /* Ensures the entire image is visible without distortion */
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .video-section {
@@ -224,5 +240,8 @@ h1, h2 {
 
   .custom-navbar .navbar-collapse {
     justify-content: center; /* Ensure mobile menu is centered when open */
+  }
+  .menu-photo {
+    max-width: 90%; /* Adjusts image size for smaller screens */
   }
 }
