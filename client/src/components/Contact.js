@@ -33,8 +33,24 @@ const Contact = () => {
       setErrorMessage("Please enter a valid email address.");
       return;
     }
-    setSuccessMessage("Your message has been sent successfully!");
-    setErrorMessage("");
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        setSuccessMessage("Your message has been sent successfully!");
+        setErrorMessage("");
+        setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+      } else {
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setErrorMessage("An error occurred while sending your message. Please try again later.");
+    }
   };
 
   return (
@@ -46,7 +62,7 @@ const Contact = () => {
           <p>We’d love to hear from you! Reach out with any inquiries or reservation requests.</p>
           <ul className="contact-details">
             <li><strong>Phone:</strong> <a href="tel:+18174943253">+1 (817) 494-3253</a></li>
-            <li><strong>Email:</strong> <a href="mailto:liimbukitchen@gmail.com">liimbukitchen@gmail.com</a></li>
+            <li><strong>Email:</strong> <a href="mailto:gettestmails@gmail.com">liimbukitchen@gmail.com</a></li>
             <li><strong>Address:</strong> 3104 Harwood Rd Bedford, TX 76021</li>
             <li><strong>Opening Hours:</strong> Tue-Sun: 11:00 AM-10:00 PM Monday-Closed</li>
           </ul>

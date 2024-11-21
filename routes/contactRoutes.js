@@ -1,7 +1,10 @@
+const express = require('express');
+const router = express.Router();
 const nodemailer = require('nodemailer');
 
+
 // Contact Route
-app.post('/api/contact', async (req, res) => {
+router.post('/', async (req, res) => {
   const { name, email, phone, message } = req.body;
 
   // Basic validation
@@ -42,3 +45,5 @@ app.post('/api/contact', async (req, res) => {
     res.status(500).json({ error: 'Failed to send message. Please try again later.' });
   }
 });
+
+module.exports = router;
