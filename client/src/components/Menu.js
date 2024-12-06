@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import frontMenu from '../assets/menu/1.png';
-import backMenu from '../assets/menu/2.png';
+import frontMenu from '../assets/menu/newMenu1.jpg';
+import backMenu from '../assets/menu/newMenu2.jpg';
 const Menu = () => {
 
     const [menuItems, setMenuItems] = useState([]);
