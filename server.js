@@ -4,6 +4,7 @@ const path = require('path');
 
 const menuItemRoutes = require ('./routes/menuRoutes');
 const contactRoutes = require ('./routes/contactRoutes');
+const reviewRoutes = require ('./routes/reviewRoutes');
 
 require('dotenv').config();
 
@@ -31,6 +32,7 @@ mongoose.connect(process.env.MONGO_URI)
 // Use routes
 app.use('/menu', menuItemRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/reviews', reviewRoutes);
 
 // Serve the static files from the React app
 app.use(express.static(path.join(__dirname, 'client/build')));

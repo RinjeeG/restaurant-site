@@ -29,6 +29,9 @@ const Navbar = () => {
             <li className="nav-item">
               <a className="nav-link" href="/contact" onClick={(e) => handleScroll(e, 'contact')}>Contact</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="https://order.toasttab.com/online/limbukitchen" >Order</a>
+            </li>
           </ul>
         </div>
       </div>

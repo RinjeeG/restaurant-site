@@ -6,6 +6,7 @@ import Menu from './components/Menu';
 import About from './components/About';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+// import Reviews from './components/Reviews';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <section id="about"><About /></section>
       <section id="menu"><Menu /></section>
       <section id="contact"><Contact /></section>
+      {/* <section id="reviews"><Reviews /></section> */}
       <section id="footer"><Footer /></section>
       </div>
     </Router>
