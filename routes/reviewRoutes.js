@@ -1,45 +1,53 @@
-const express = require('express');
-const https = require('https');
+import express from 'express';
+import fetch from 'node-fetch';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const router = express.Router();
-require('dotenv').config(); // Load .env variables
 
-// API route to get top reviews
-router.get('/reviews', (req, res) => {
-    const { GOOGLE_API_URL, GOOGLE_API_KEY, PLACE_ID } = process.env;
+router.get('/api/reviews', async (req, res) => {
+    try {
+        const { GOOGLE_API_URL, GOOGLE_API_KEY, PLACE_ID } = process.env;
 
-    const url = `${GOOGLE_API_URL}?place_id=${PLACE_ID}&fields=reviews&key=${GOOGLE_API_KEY}`;
+        if (!GOOGLE_API_URL || !GOOGLE_API_KEY || !PLACE_ID) {
+            return res.status(500).json({ error: 'Missing required environment variables.' });
+        }
 
-    console.log('Fetching from URL:', url); // Debugging URL construction
+        const url = `${GOOGLE_API_URL}?place_id=${PLACE_ID}&fields=name,rating,reviews&key=${GOOGLE_API_KEY}`;
+        console.log('Constructed URL:', url);
 
-    https.get(url, (apiResponse) => {
-        let data = '';
+        const response = await fetch(url);
 
-        apiResponse.on('data', (chunk) => {
-            data += chunk;
-        });
+        // Debug invalid responses
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text();
+            console.error('Non-JSON Response:', text);
+            return res.status(500).json({ error: 'Received invalid response from API.' });
+        }
 
-        apiResponse.on('end', () => {
-            try {
-                const parsedData = JSON.parse(data);
-                console.log('Google API Response:', parsedData); // Log the entire response
+        if (!response.ok) {
+            console.error(`API call failed with status ${response.status}: ${response.statusText}`);
+            const errorText = await response.text();
+            console.error('API Error Text:', errorText);
+            return res.status(response.status).json({ error: 'Failed to fetch reviews' });
+        }
 
-                const reviews = parsedData.result?.reviews || [];
-                if (reviews.length === 0) {
-                    console.log('No reviews found for this place.');
-                    return res.json({ message: 'No reviews available for this place.' });
-                }
+        const data = await response.json();
+        console.log('Full API Response:', JSON.stringify(data, null, 2));
 
-                const bestReviews = reviews.filter((review) => review.rating === 5);
-                res.json(bestReviews.slice(0, 5));
-            } catch (error) {
-                console.error('Error parsing API response:', error.message);
-                res.status(500).json({ error: 'Unable to process API response' });
-            }
-        });
-    }).on('error', (error) => {
-        console.error('Error fetching reviews:', error.message);
-        res.status(500).json({ error: 'Unable to fetch reviews' });
-    });
+        const reviews = data.result?.reviews || [];
+        if (!reviews.length) {
+            console.log('No reviews found for this place.');
+            return res.json({ message: 'No reviews found or reviews unavailable.' });
+        }
+
+        const bestReviews = reviews.filter((review) => review.rating === 5);
+        res.json(bestReviews.slice(0, 5));
+    } catch (error) {
+        console.error('Error fetching or processing reviews:', error.message);
+        res.status(500).json({ error: 'Unable to fetch or process reviews.' });
+    }
 });
 
-module.exports = router;
+export default router;

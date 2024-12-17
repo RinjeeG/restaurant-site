@@ -1,11 +1,11 @@
-const express = require('express');
-const router = express.Router();
-const menuItemController = require('../controllers/menuItemController');
+// import express from 'express';
+// const router = express.Router();
+// import { getMenuItems, getMenuItemById } from '../controllers/menuItemController.js';
 
-// get all menu items
-router.get('/', menuItemController.getMenuItems);
+// // Get all menu items
+// router.get('/', getMenuItems);
 
-// get single menu item with id
-router.get('/:id', menuItemController.getMenuItemById);
+// // Get single menu item with ID
+// router.get('/:id', getMenuItemById);
 
-module.exports = router;
+// export default router;
