@@ -34,7 +34,10 @@ mongoose.connect(process.env.MONGO_URI)
 // Routes
 // app.use('/menu', menuItemRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/reviews', reviewRoutes);
+console.log('Registering routes...');
+app.use('/api/reviews', reviewRoutes);
+console.log('Routes registered successfully.');
+
 
 // Serve the static files from the React app
 const __filename = fileURLToPath(import.meta.url);

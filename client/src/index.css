@@ -221,6 +221,20 @@ h1, h2 {
   object-fit: contain; /* Ensures the entire image is visible without distortion */
 }
 
+.review-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
   .video-section {

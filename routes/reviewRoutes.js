@@ -5,7 +5,7 @@ dotenv.config();
 
 const router = express.Router();
 
-router.get('/api/reviews', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const { GOOGLE_API_URL, GOOGLE_API_KEY, PLACE_ID } = process.env;
 
@@ -14,7 +14,6 @@ router.get('/api/reviews', async (req, res) => {
         }
 
         const url = `${GOOGLE_API_URL}?place_id=${PLACE_ID}&fields=name,rating,reviews&key=${GOOGLE_API_KEY}`;
-        console.log('Constructed URL:', url);
 
         const response = await fetch(url);
 
@@ -34,7 +33,6 @@ router.get('/api/reviews', async (req, res) => {
         }
 
         const data = await response.json();
-        console.log('Full API Response:', JSON.stringify(data, null, 2));
 
         const reviews = data.result?.reviews || [];
         if (!reviews.length) {
@@ -49,5 +47,13 @@ router.get('/api/reviews', async (req, res) => {
         res.status(500).json({ error: 'Unable to fetch or process reviews.' });
     }
 });
+// router.get('/api/reviews', (req, res) => {
+//     console.log('Received request to /api/reviews');
+//     res.json([
+//         { author_name: "John Doe", rating: 5, text: "Excellent place!" },
+//         { author_name: "Jane Smith", rating: 4, text: "Very good experience!" }
+//     ]);
+// });
+
 
 export default router;
